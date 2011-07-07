@@ -2,6 +2,9 @@
 " LastChange: 2011-01-04
 " Maintainer: Jeffy Du <jeffy.du@163.com>
 "
+" LastChange: 2011-07-07
+" Modified:   Librae <librae8226@gmail.com>
+"
 " License:    This file is placed in the public domain
 
 if exists('loaded_hlud')
@@ -50,9 +53,9 @@ function! HLUDColor()
 				\HLUDGetTags('s') . HLUDGetTags('g')
 	exec 'syn keyword cUserDefines ' . HLUDGetTags('d') . HLUDGetTags('e')
 	exec 'syn keyword cUserFunctions ' . HLUDGetTags('f') . HLUDGetTags('p')
-	exec 'hi cUserTypes ctermfg=green'
-	exec 'hi cUserDefines ctermfg=red'
-	exec 'hi cUserFunctions ctermfg=magenta'
+	exec 'hi cUserTypes ctermfg=green cterm=none'
+	exec 'hi cUserDefines ctermfg=grey cterm=none'
+	exec 'hi cUserFunctions ctermfg=grey cterm=bold'
 endfunction
 
 " sync tag data

@@ -10,7 +10,7 @@ if [ -n "$1" ]; then
 	if [ $1 == "push" ]; then
 		echo 'copy vimrc, bashrc and vimscheme file here.'
 		cp -af ~/.vimrc ./_vimrc
-		cp -af ~/.vim/ ./_vim/
+		cp -af ~/.vim/* ./_vim/
 		echo 'pushing...'
 		git add .
 		git commit
