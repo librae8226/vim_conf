@@ -40,7 +40,7 @@ set   helpheight=10
 set   helplang=cn
 set   hidden
 set   history=100
-set   hlsearch
+"set   hlsearch
 set   ignorecase
 set   incsearch
 set   laststatus=2
@@ -82,6 +82,38 @@ endif
 " Customiaze settings
 "hi cMathOperator	cterm=none ctermfg=6
 
+"-----------------
+" vimwiki support
+"-----------------
+map <S-F7> :VimwikiAll2HTML<cr>
+map <F7> :Vimwiki2HTML<cr>
+" 我们并不怎么需要驼峰英文成为维基词条
+let g:vimwiki_camel_case = 0
+" 标记为完成的 checklist 项目会有特别的颜色
+let g:vimwiki_hl_cb_checked = 1
+let g:vimwiki_list = [{'path_html': '~/vimwiki/vimwiki_html/',}]
+" 是否在词条文件保存时就输出html  这个会让保存大词条比较慢
+" 所以我默认没有启用  有需要的话就把这一行复制到下面去
+" \ 'auto_export': 1,     
+" 多个维基项目的配置
+" let g:vimwiki_list = [{'path': 'E:/My Dropbox/vimwiki/',
+"       \ 'html_header': 'E:/My Dropbox/Public/vimwiki_template/header.htm',
+"       \ 'html_footer': 'E:/My Dropbox/Public/vimwiki_template/footer.htm',
+"       \ 'diary_link_count': 5},
+"       \{'path': 'Z:\demo\qiuchi\wiki'}]
+" 对中文用户来说，我们并不怎么需要驼峰英文成为维基词条
+" let g:vimwiki_camel_case = 0
+" 标记为完成的 checklist 项目会有特别的颜色
+" let g:vimwiki_hl_cb_checked = 1
+" 我的 vim 是没有菜单的，加一个 vimwiki 菜单项也没有意义
+" let g:vimwiki_menu = ''
+" 是否开启按语法折叠  会让文件比较慢
+" let g:vimwiki_folding = 1   
+" 是否在计算字串长度时用特别考虑中文字符
+" let g:vimwiki_CJK_length = 1       
+" 详见下文...
+" let g:vimwiki_valid_html_tags='b,i,s,u,sub,sup,kbd,del,br,hr,div,code,h1'
+
 " AUTO COMMANDS: {{{1
 " auto expand tab to blanks
 autocmd FileType c,cpp set expandtab
@@ -117,12 +149,12 @@ let g:Tlist_Auto_Update=1
 let g:Tlist_Process_File_Always=1
 let g:Tlist_Exit_OnlyWindow=1
 let g:Tlist_Show_One_File=1
-let g:Tlist_WinWidth=25
+let g:Tlist_WinWidth=52
 let g:Tlist_Enable_Fold_Column=0
 let g:Tlist_Auto_Highlight_Tag=1
 " NERDTree.vim
 let g:NERDTreeWinPos="right"
-let g:NERDTreeWinSize=25
+let g:NERDTreeWinSize=34
 let g:NERDTreeShowLineNumbers=1
 let g:NERDTreeQuitOnOpen=1
 " cscope.vim
@@ -170,9 +202,9 @@ nmap  <F4> :MRU<cr>
 nmap  <F5> <Plug>LookupFile<cr>
 nmap  <F6> :vimgrep /<C-R>=expand("<cword>")<cr>/ **/*.c **/*.h<cr><C-o>:cw<cr>
 nmap  <F9> :call RunShell("Generate tags", "ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .")<cr>
-nmap <F10> :call HLUDSync()<cr>
-nmap <F11> :call RunShell("Generate filename tags", "~/.vim/shell/genfiletags.sh")<cr>
-nmap <F12> :call RunShell("Generate cscope", "cscope -Rb")<cr>:cs add cscope.out<cr>
+nmap <C-F10> :call HLUDSync()<cr>
+nmap <C-F11> :call RunShell("Generate filename tags", "~/.vim/shell/genfiletags.sh")<cr>
+nmap <C-F12> :call RunShell("Generate cscope", "cscope -Rb")<cr>:cs add cscope.out<cr>
 nmap <leader>sa :cs add cscope.out<cr>
 nmap <leader>ss :cs find s <C-R>=expand("<cword>")<cr><cr>
 nmap <leader>sg :cs find g <C-R>=expand("<cword>")<cr><cr>
@@ -184,4 +216,10 @@ nmap <leader>si :cs find i <C-R>=expand("<cfile>")<cr><cr>
 nmap <leader>sd :cs find d <C-R>=expand("<cword>")<cr><cr>
 nmap <leader>zz <C-w>o
 nmap <leader>gs :GetScripts<cr>
-
+" mark setting
+nmap <silent> <leader>hl <Plug>MarkSet
+vmap <silent> <leader>hl <Plug>MarkSet
+nmap <silent> <leader>hh <Plug>MarkClear
+vmap <silent> <leader>hh <Plug>MarkClear
+nmap <silent> <leader>hr <Plug>MarkRegex
+vmap <silent> <leader>hr <Plug>MarkRegex 

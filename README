@@ -1,3 +1,12 @@
+
+Here is a list of plugins I am using:
+---------------------------------------------------------------------------
+acp.vim          getscriptPlugin.vim  mru.vim             taglist.vim
+bufexplorer.vim  hlud.vim             NERD_commenter.vim  vimwiki.vim
+echofunc.vim     lookupfile.vim       NERD_tree.vim       ZoomWinPlugin.vim
+genutils.vim     mark.vim             snipMate.vim
+---------------------------------------------------------------------------
+
 Great thanks to those elegent vim plugin develpers.
 :P
 

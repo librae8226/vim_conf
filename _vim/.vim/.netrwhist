@@ -1,0 +1,3 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_1='/home/yliao/mnt/compile_server_71/work/marvell/xxu_v299_marlin/Android_SDK/vendor/marvell/generic/solsmp/solsmp_api'
