@@ -47,7 +47,7 @@ set   laststatus=2
 "set   mouse=a
 set   mouse=v
 set   number
-set   paste
+"set   paste
 set   pumheight=10
 set   ruler
 set   scrolloff=5
