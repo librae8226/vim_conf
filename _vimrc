@@ -25,13 +25,13 @@ set   autoread
 set   autowrite
 set   background=dark
 set   backspace=indent,eol,start
-set nobackup
+set   nobackup
 set   cindent
 set   cinoptions=:0
 set   completeopt=longest,menuone
 "set   cursorline
 set   encoding=utf-8
-set noexpandtab
+set   noexpandtab
 set   fileencodings=utf-8,gb2312,gbk,gb18030,chinese
 set   fileformat=unix
 set   foldenable
@@ -44,8 +44,10 @@ set   history=100
 set   ignorecase
 set   incsearch
 set   laststatus=2
-set   mouse=a
+"set   mouse=a
+set   mouse=v
 set   number
+set   paste
 set   pumheight=10
 set   ruler
 set   scrolloff=5
@@ -127,8 +129,8 @@ autocmd BufReadPost *
 " Set mapleader
 let mapleader=","
 " Space to command mode.
-nnoremap <space> :
-vnoremap <space> :
+"nnoremap <space> :
+"vnoremap <space> :
 " Switching between buffers.
 nnoremap <C-h> <C-W>h
 nnoremap <C-j> <C-W>j
@@ -201,7 +203,7 @@ nmap  <F3> :NERDTreeToggle<cr>
 nmap  <F4> :MRU<cr>
 nmap  <F5> <Plug>LookupFile<cr>
 nmap  <F6> :vimgrep /<C-R>=expand("<cword>")<cr>/ **/*.c **/*.h<cr><C-o>:cw<cr>
-nmap  <F9> :call RunShell("Generate tags", "ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .")<cr>
+nmap  <C-F9> :call RunShell("Generate tags", "ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .")<cr>
 nmap <C-F10> :call HLUDSync()<cr>
 nmap <C-F11> :call RunShell("Generate filename tags", "~/.vim/shell/genfiletags.sh")<cr>
 nmap <C-F12> :call RunShell("Generate cscope", "cscope -Rb")<cr>:cs add cscope.out<cr>
