@@ -58,7 +58,7 @@ set   smartindent
 set   smartcase
 set   tabstop=4
 set   termencoding=utf-8
-set   textwidth=80
+"set   textwidth=80
 set   whichwrap=h,l
 set   wildignore=*.bak,*.o,*.e,*~
 set   wildmenu
@@ -276,6 +276,7 @@ function! RunShell(Msg, Shell)
 endfunction
 nmap  <F2> :TlistToggle<cr>
 nmap  <F3> :NERDTreeToggle<cr>
+nmap <C-F3> :NERDTreeMapRefreshRoot<cr>
 nmap  <F4> :MRU<cr>
 nmap  <F5> <Plug>LookupFile<cr>
 nmap <C-F5> :e<cr>
