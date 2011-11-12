@@ -7,7 +7,7 @@
 " LastChange: 2011-01-09
 "
 " Modified:   Librae <librae8226@gmail.com>
-" LastChange: 2011-07-26
+" LastChange: 2011-07-28
 
 " GENERAL SETTINGS: {{{1
 " To use VIM settings, out of VI compatible mode.
@@ -20,7 +20,6 @@ syntax on
 colorscheme desert 
 " Config for vim72
 if v:version >= 702
-set   tabstop=8
 set   autoindent
 set   autoread
 set   autowrite
@@ -41,7 +40,7 @@ set   helpheight=10
 set   helplang=cn
 set   hidden
 set   history=100
-"set   hlsearch
+set   nohlsearch
 set   ignorecase
 set   incsearch
 set   laststatus=2
@@ -52,13 +51,13 @@ set   number
 set   pumheight=10
 set   ruler
 set   scrolloff=5
-set   shiftwidth=4
+set   shiftwidth=8
 set   showcmd
 set   smartindent
 set   smartcase
-set   tabstop=4
+set   tabstop=8
 set   termencoding=utf-8
-set   textwidth=80
+"set   textwidth=80
 set   whichwrap=h,l
 set   wildignore=*.bak,*.o,*.e,*~
 set   wildmenu
@@ -194,7 +193,7 @@ let g:vimwiki_list = [{'path_html': '~/vimwiki/vimwiki_html/',}]
 
 " AUTO COMMANDS: {{{1
 " auto expand tab to blanks
-autocmd FileType c,cpp set expandtab
+"autocmd FileType c,cpp set expandtab
 " Restore the last quit position when open file.
 autocmd BufReadPost *
     \ if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -227,12 +226,12 @@ let g:Tlist_Auto_Update=1
 let g:Tlist_Process_File_Always=1
 let g:Tlist_Exit_OnlyWindow=1
 let g:Tlist_Show_One_File=1
-let g:Tlist_WinWidth=40
+let g:Tlist_WinWidth=36
 let g:Tlist_Enable_Fold_Column=0
 let g:Tlist_Auto_Highlight_Tag=1
 " NERDTree.vim
 let g:NERDTreeWinPos="right"
-let g:NERDTreeWinSize=34
+let g:NERDTreeWinSize=26
 let g:NERDTreeShowLineNumbers=1
 let g:NERDTreeQuitOnOpen=1
 " cscope.vim
@@ -276,6 +275,7 @@ function! RunShell(Msg, Shell)
 endfunction
 nmap  <F2> :TlistToggle<cr>
 nmap  <F3> :NERDTreeToggle<cr>
+nmap <C-F3> :NERDTreeRefreshRoot<cr>
 nmap  <F4> :MRU<cr>
 nmap  <F5> <Plug>LookupFile<cr>
 nmap <C-F5> :e<cr>
