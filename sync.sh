@@ -3,7 +3,7 @@
 if [ -n "$1" ]; then
 	echo ''
 	echo 'Start synchronizing...'
-	git config remote.origin.url "git@github.com:librae8226/vim_conf.git"
+	#git config remote.origin.url "git@github.com:librae8226/vim_conf.git"
 	DATE=$(date)
 	echo $DATE
 	echo ''

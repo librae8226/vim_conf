@@ -20,7 +20,6 @@ syntax on
 colorscheme desert 
 " Config for vim72
 if v:version >= 702
-set   tabstop=8
 set   autoindent
 set   autoread
 set   autowrite
@@ -52,11 +51,11 @@ set   number
 set   pumheight=10
 set   ruler
 set   scrolloff=5
-set   shiftwidth=4
+set   shiftwidth=8
 set   showcmd
 set   smartindent
 set   smartcase
-set   tabstop=4
+set   tabstop=8
 set   termencoding=utf-8
 "set   textwidth=80
 set   whichwrap=h,l
@@ -194,7 +193,7 @@ let g:vimwiki_list = [{'path_html': '~/vimwiki/vimwiki_html/',}]
 
 " AUTO COMMANDS: {{{1
 " auto expand tab to blanks
-autocmd FileType c,cpp set expandtab
+"autocmd FileType c,cpp set expandtab
 " Restore the last quit position when open file.
 autocmd BufReadPost *
     \ if line("'\"") > 0 && line("'\"") <= line("$") |
