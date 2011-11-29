@@ -7,7 +7,7 @@
 " LastChange: 2011-01-09
 "
 " Modified:   Librae <librae8226@gmail.com>
-" LastChange: 2011-07-26
+" LastChange: 2011-07-28
 
 " GENERAL SETTINGS: {{{1
 " To use VIM settings, out of VI compatible mode.
@@ -40,7 +40,7 @@ set   helpheight=10
 set   helplang=cn
 set   hidden
 set   history=100
-"set   hlsearch
+set   nohlsearch
 set   ignorecase
 set   incsearch
 set   laststatus=2
@@ -226,12 +226,12 @@ let g:Tlist_Auto_Update=1
 let g:Tlist_Process_File_Always=1
 let g:Tlist_Exit_OnlyWindow=1
 let g:Tlist_Show_One_File=1
-let g:Tlist_WinWidth=40
+let g:Tlist_WinWidth=36
 let g:Tlist_Enable_Fold_Column=0
 let g:Tlist_Auto_Highlight_Tag=1
 " NERDTree.vim
 let g:NERDTreeWinPos="right"
-let g:NERDTreeWinSize=34
+let g:NERDTreeWinSize=26
 let g:NERDTreeShowLineNumbers=1
 let g:NERDTreeQuitOnOpen=1
 " cscope.vim
@@ -275,7 +275,7 @@ function! RunShell(Msg, Shell)
 endfunction
 nmap  <F2> :TlistToggle<cr>
 nmap  <F3> :NERDTreeToggle<cr>
-nmap <C-F3> :NERDTreeMapRefreshRoot<cr>
+nmap <C-F3> :NERDTreeRefreshRoot<cr>
 nmap  <F4> :MRU<cr>
 nmap  <F5> <Plug>LookupFile<cr>
 nmap <C-F5> :e<cr>

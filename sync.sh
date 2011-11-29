@@ -17,7 +17,7 @@ if [ -n "$1" ]; then
 		git push origin master
 	elif [ $1 == "pull" ]; then
 		echo "pulling..."
-		git pull origin master
+		git pull --all
 	else
 		echo "error arg."
 		echo "USAGE: sync push|pull"
