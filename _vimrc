@@ -7,7 +7,7 @@
 " LastChange: 2011-01-09
 "
 " Modified:   Librae <librae8226@gmail.com>
-" LastChange: 2011-07-28
+" LastChange: 2011-11-29
 
 " GENERAL SETTINGS: {{{1
 " To use VIM settings, out of VI compatible mode.
