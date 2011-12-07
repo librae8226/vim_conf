@@ -17,7 +17,7 @@ filetype plugin indent on
 " Syntax highlighting.
 syntax on
 " Setting colorscheme
-colorscheme desert 
+colorscheme desert
 " Config for vim72
 if v:version >= 702
 set   autoindent
@@ -83,6 +83,7 @@ endif
 
 " Customiaze settings
 "hi cMathOperator	cterm=none ctermfg=6
+" show unexpected white spaces
 hi ExtraWhitespace	ctermbg=red guibg=red
 match ExtraWhitespace	/\s\+$\| \+\ze\t/
 
@@ -173,7 +174,7 @@ let g:vimwiki_hl_cb_checked = 1
 let g:vimwiki_list = [{'path_html': '~/vimwiki/vimwiki_html/',}]
 " 是否在词条文件保存时就输出html  这个会让保存大词条比较慢
 " 所以我默认没有启用  有需要的话就把这一行复制到下面去
-" \ 'auto_export': 1,     
+" \ 'auto_export': 1,
 " 多个维基项目的配置
 " let g:vimwiki_list = [{'path': 'E:/My Dropbox/vimwiki/',
 "       \ 'html_header': 'E:/My Dropbox/Public/vimwiki_template/header.htm',
@@ -187,9 +188,9 @@ let g:vimwiki_list = [{'path_html': '~/vimwiki/vimwiki_html/',}]
 " 我的 vim 是没有菜单的，加一个 vimwiki 菜单项也没有意义
 " let g:vimwiki_menu = ''
 " 是否开启按语法折叠  会让文件比较慢
-" let g:vimwiki_folding = 1   
+" let g:vimwiki_folding = 1
 " 是否在计算字串长度时用特别考虑中文字符
-" let g:vimwiki_CJK_length = 1       
+" let g:vimwiki_CJK_length = 1
 " 详见下文...
 " let g:vimwiki_valid_html_tags='b,i,s,u,sub,sup,kbd,del,br,hr,div,code,h1'
 
@@ -283,6 +284,7 @@ nmap <F5> <Plug>LookupFile<cr>
 nmap <C-F5> :e<cr>
 nmap <F6> :vimgrep /<C-R>=expand("<cword>")<cr>/ **/*.c **/*.h<cr><C-o>:cw<cr>
 nmap <F8> :highlight ExtraWhitespace ctermbg=red guibg=red<cr>:match ExtraWhitespace /\s\+$\| \+\ze\t/
+" remove unexpected white spaces
 nmap <C-F8> :%s=\s\+$==<cr>
 nmap <C-F9> :call RunShell("Generate tags", "ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .")<cr>
 nmap <C-F10> :call HLUDSync()<cr>
@@ -305,5 +307,4 @@ vmap <silent> <leader>hl <Plug>MarkSet
 nmap <silent> <leader>hh <Plug>MarkClear
 vmap <silent> <leader>hh <Plug>MarkClear
 nmap <silent> <leader>hr <Plug>MarkRegex
-vmap <silent> <leader>hr <Plug>MarkRegex 
-
+vmap <silent> <leader>hr <Plug>MarkRegex
