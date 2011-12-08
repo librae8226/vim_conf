@@ -283,7 +283,8 @@ nmap <F4> :MRU<cr>
 nmap <F5> <Plug>LookupFile<cr>
 nmap <C-F5> :e<cr>
 nmap <F6> :vimgrep /<C-R>=expand("<cword>")<cr>/ **/*.c **/*.h<cr><C-o>:cw<cr>
-nmap <F8> :highlight ExtraWhitespace ctermbg=red guibg=red<cr>:match ExtraWhitespace /\s\+$\| \+\ze\t/
+" cancel highlighting ExtraWhitespace
+nmap <F8> :match ExtraWhitespace /\s\+\%#\@<!$\| \+\%#\@<!\ze\t/<cr>
 " remove unexpected white spaces
 nmap <C-F8> :%s=\s\+$==<cr>
 nmap <C-F9> :call RunShell("Generate tags", "ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .")<cr>
