@@ -62,7 +62,7 @@ set   whichwrap=h,l
 set   wildignore=*.bak,*.o,*.e,*~
 set   wildmenu
 set   wildmode=list:longest,full
-"set nowrap
+set nowrap
 endif
 " Config for vim73
 if v:version >= 703
