@@ -17,13 +17,13 @@ filetype plugin indent on
 " Syntax highlighting.
 syntax on
 " Setting colorscheme
-colorscheme desert
+colorscheme librae
 " Config for vim72
 if v:version >= 702
 set   autoindent
 set   autoread
 set   autowrite
-set   background=dark
+"set   background=dark
 set   backspace=indent,eol,start
 set   nobackup
 set   cindent
@@ -62,7 +62,7 @@ set   whichwrap=h,l
 set   wildignore=*.bak,*.o,*.e,*~
 set   wildmenu
 set   wildmode=list:longest,full
-set nowrap
+"set nowrap
 endif
 " Config for vim73
 if v:version >= 703
