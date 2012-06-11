@@ -49,7 +49,7 @@ endfunction
 
 " highlight tags data
 function! HLUDColor()
-	exec 'syn keyword cUserTypes ' . HLUDGetTags('t') . HLUDGetTags('u') . 
+	exec 'syn keyword cUserTypes ' . HLUDGetTags('t') . HLUDGetTags('u') .
 				\HLUDGetTags('s') . HLUDGetTags('g')
 	exec 'syn keyword cUserDefines ' . HLUDGetTags('d') . HLUDGetTags('e')
 	exec 'syn keyword cUserFunctions ' . HLUDGetTags('f') . HLUDGetTags('p')

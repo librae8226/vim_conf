@@ -7,7 +7,7 @@
 " LastChange: 2011-01-09
 "
 " Modified:   Librae <librae8226@gmail.com>
-" LastChange: 2011-07-26
+" LastChange: 2011-07-28
 
 " GENERAL SETTINGS: {{{1
 " To use VIM settings, out of VI compatible mode.
@@ -40,7 +40,7 @@ set   helpheight=10
 set   helplang=cn
 set   hidden
 set   history=100
-"set   hlsearch
+set   nohlsearch
 set   ignorecase
 set   incsearch
 set   laststatus=2
@@ -196,7 +196,7 @@ let g:vimwiki_list = [{'path_html': '~/vimwiki/vimwiki_html/',}]
 
 " AUTO COMMANDS: {{{1
 " auto expand tab to blanks
-autocmd FileType c,cpp set noexpandtab
+"autocmd FileType c,cpp set expandtab
 " Restore the last quit position when open file.
 autocmd BufReadPost *
     \ if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -229,12 +229,12 @@ let g:Tlist_Auto_Update=1
 let g:Tlist_Process_File_Always=1
 let g:Tlist_Exit_OnlyWindow=1
 let g:Tlist_Show_One_File=1
-let g:Tlist_WinWidth=40
+let g:Tlist_WinWidth=36
 let g:Tlist_Enable_Fold_Column=0
 let g:Tlist_Auto_Highlight_Tag=1
 " NERDTree.vim
 let g:NERDTreeWinPos="right"
-let g:NERDTreeWinSize=34
+let g:NERDTreeWinSize=32
 let g:NERDTreeShowLineNumbers=1
 let g:NERDTreeQuitOnOpen=1
 " cscope.vim
