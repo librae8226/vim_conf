@@ -7,7 +7,7 @@
 " LastChange: 2011-01-09
 "
 " Modified:   Librae <librae8226@gmail.com>
-" LastChange: 2011-07-28
+" LastChange: 2012-08-14
 
 " GENERAL SETTINGS: {{{1
 " To use VIM settings, out of VI compatible mode.
@@ -171,7 +171,12 @@ map <F7> :Vimwiki2HTML<cr>
 let g:vimwiki_camel_case = 0
 " 标记为完成的 checklist 项目会有特别的颜色
 let g:vimwiki_hl_cb_checked = 1
-let g:vimwiki_list = [{'path_html': '~/vimwiki/vimwiki_html/',}]
+"let g:vimwiki_list = [{'path_html': '~/vimwiki/vimwiki_html/',}]
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+                     \ 'path_html': '~/vimwiki/vimwiki_html/',
+                     \ 'template_path': '~/vimwiki/templates/',
+                     \ 'template_default': 'def_template',
+                     \ 'template_ext': '.html'}]
 " 是否在词条文件保存时就输出html  这个会让保存大词条比较慢
 " 所以我默认没有启用  有需要的话就把这一行复制到下面去
 " \ 'auto_export': 1,
