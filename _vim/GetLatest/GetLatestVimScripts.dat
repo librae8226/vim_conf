@@ -2,14 +2,15 @@ ScriptID SourceID Filename
 --------------------------
 1879 11894 :AutoInstall: AutoComplPop
 42 14208 :AutoInstall: BufExplorer
-1735 15953 :AutoInstall: EchoFunc
+1735 17383 :AutoInstall: EchoFunc
 197 11399 :AutoInstall: Genutils
 1581 7671 :AutoInstall: LookupFile
-521 11919 :AutoInstall: MRU
+521 17773 :AutoInstall: MRU
 1218 14455 :AutoInstall: NERD_Commenter
-1658 11834 :AutoInstall: NERD_Tree
+1658 17123 :AutoInstall: NERD_Tree
 1520 7722 :AutoInstall: OmniCppComplete
 2540 11006 :AutoInstall: snipMate
 273 7701 :AutoInstall: Taglist
-508 9865 :AutoInstall: ZoomWin
+508 18151 :AutoInstall: ZoomWin
 642 15781 :AutoInstall: getscript.vim
+2226 18232 :AutoInstall: vimwiki
