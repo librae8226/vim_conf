@@ -84,8 +84,9 @@ endif
 " Customiaze settings
 "hi cMathOperator	cterm=none ctermfg=6
 " show unexpected white spaces, and disable display while typing
-hi ExtraWhitespace	ctermbg=red guibg=red
-match ExtraWhitespace	/\s\+\%#\@<!$\| \+\%#\@<!\ze\t/
+"hi ExtraWhitespace	ctermbg=red guibg=red
+"match ExtraWhitespace	/\s\+\%#\@<!$\| \+\%#\@<!\ze\t/
+let c_space_errors=1
 
 " Multi-line Comment -------------------
 " @brief: Add or delete line comment //
