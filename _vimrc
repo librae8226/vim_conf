@@ -62,7 +62,7 @@ set   whichwrap=h,l
 set   wildignore=*.bak,*.o,*.e,*~
 set   wildmenu
 set   wildmode=list:longest,full
-"set nowrap
+set   nowrap
 endif
 " Config for vim73
 if v:version >= 703
@@ -289,6 +289,7 @@ nmap <F4> :MRU<cr>
 nmap <F5> <Plug>LookupFile<cr>
 nmap <C-F5> :e<cr>
 nmap <F6> :vimgrep /<C-R>=expand("<cword>")<cr>/ **/*.c **/*.h<cr><C-o>:cw<cr>
+nmap <C-F6> :vimgrep /<C-R>=expand("<cword>")<cr>/ %<cr><C-o>:cw<cr>
 " cancel highlighting ExtraWhitespace
 "nmap <F8> :match ExtraWhitespace /\s\+\%#\@<!$\| \+\%#\@<!\ze\t/<cr>
 " change file format from dos to unix completely
