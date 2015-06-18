@@ -1,309 +1,268 @@
-" .vimrc - Vim configuration file.
-"
-" Copyright (c) 2010 Jeffy Du. All Rights Reserved.
-"
-" Maintainer: Jeffy Du <jeffy.du@gmail.com>
-"    Created: 2010-01-01
-" LastChange: 2011-01-09
-"
-" Modified:   Librae <librae8226@gmail.com>
-" LastChange: 2012-08-14
+""""""""""""""""""""""VUNDLE PLUGIN""""""""""""""""""""
 
-" GENERAL SETTINGS: {{{1
-" To use VIM settings, out of VI compatible mode.
+" 不兼容vi
 set nocompatible
-" Enable file type detection.
+
+" 不检测文件类型
+filetype off
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+
+Plugin 'jelera/vim-javascript-syntax'
+"Plugin 'walm/jshint.vim'
+Plugin 'moll/vim-node'
+Plugin 'airblade/vim-gitgutter'
+"Plugin 'Yggdroot/indentLine'
+"Plugin 'nvie/vim-flake8'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'axiaoxin/vim-json-line-format'
+Plugin 'junegunn/vim-emoji'
+Plugin 'mhinz/vim-startify'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'suan/vim-instant-markdown'
+"Plugin 'tpope/vim-surround'
+"Plugin 'SirVer/ultisnips'
+"Plugin 'honza/vim-snippets'
+Plugin 'bling/vim-airline'
+Plugin 'kien/ctrlp.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Yggdroot/vim-mark'
+Plugin 'jlanzarotta/bufexplorer'
+Plugin 'Valloric/YouCompleteMe'
+
+call vundle#end()
+
+" 针对不同的文件类型采用不同的缩进格式
 filetype plugin indent on
-" Syntax highlighting.
-syntax on
-" Setting colorscheme
-colorscheme librae
-" Config for vim72
-if v:version >= 702
-set   autoindent
-set   autoread
-set   autowrite
-"set   background=dark
-set   backspace=indent,eol,start
-set   nobackup
-set   cindent
-set   cinoptions=:0
-set   completeopt=longest,menuone
-"set   cursorline
-set   encoding=utf-8
-set   noexpandtab
-set   fileencodings=utf-8,gb2312,gbk,gb18030,chinese
-set   fileformat=unix
-set   foldenable
-set   foldmethod=marker
-set   helpheight=10
-set   helplang=cn
-set   hidden
-set   history=100
-set   nohlsearch
-set   ignorecase
-set   incsearch
-set   laststatus=2
-"set   mouse=a
-set   mouse=v
-set   number
-"set   paste
-set   pumheight=10
-set   ruler
-set   scrolloff=5
-set   shiftwidth=8
-set   showcmd
-set   smartindent
-set   smartcase
-set   tabstop=8
-set   termencoding=utf-8
-"set   textwidth=80
-set   whichwrap=h,l
-set   wildignore=*.bak,*.o,*.e,*~
-set   wildmenu
-set   wildmode=list:longest,full
-set   nowrap
-endif
-" Config for vim73
-if v:version >= 703
-"set   colorcolumn=+1
-endif
-" Config for win32 gvim.
+
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just
+" :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to
+" auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+
+""""""""""""""""""""""BASE CONFIG"""""""""""""""""""""""
+
+" 取消备份
+set nobackup
+set noswapfile
+
+" 解决中文乱码
+set encoding=utf-8
+set fileencodings=utf-8,chinese,gbk,latin-1,gb2312,ucs-bom,cp936
 if has("win32")
-set   guioptions-=T
-set   guioptions-=m
-set   guioptions-=r
-set   guioptions-=l
-set   lines=26
-set   columns=90
+  set fileencoding=chinese
+else
+  set fileencoding=utf-8
+endif
+
+" 解决菜单乱码
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
+
+" 解决consle输出乱码
 language messages zh_CN.utf-8
+
+" 状态栏配置
+set laststatus=2
+
+" 打开语法高亮
+syntax enable
+
+" 开启语法检测
+syntax on
+
+" vimrc文件修改之后自动加载
+autocmd! bufwritepost .vimrc source %
+
+" 文件修改之后自动载入
+set autoread
+
+" yy直接复制到系统剪切板（For macvim）
+"set clipboard=unnamed
+
+" 高亮搜索命中的文本
+set nohlsearch
+
+" 随着键入即时搜索
+set incsearch
+
+" 搜索时忽略大小写
+set ignorecase
+
+" 有一个或以上大写字母时仍大小写敏感
+set smartcase
+
+set guifont=Menlo:h14
+"set lines=24 columns=90
+
+colorscheme librae
+" 使用自带配色
+"colorscheme desert
+set background=dark
+
+" 在状态栏显示正在输入的命令
+set showcmd
+
+" 显示括号配对情况
+set showmatch
+
+" :next, :make 命令之前自动保存
+set autowrite
+
+" 允许使用鼠标
+set mouse=a
+
+" 设置行号
+set nu
+
+" 退格键可用
+set backspace=2
+
+" 退格键一次删掉4个空格
+set smarttab
+
+" 缩进
+set autoindent
+set smartindent
+
+" 保存文件时自动删除行尾空格或Tab
+"autocmd BufWritePre * :%s/\s\+$//e
+
+" 保存文件时自动删除末尾空行
+"autocmd BufWritePre * :%s/^$\n\+\%$//ge
+
+" 填充Tab
+set expandtab
+set tabstop=8
+set shiftwidth=8
+set shiftround
+
+" 代码折叠 光标在缩进下方时用za命令折叠或展开
+set fdm=indent
+" 默认展开
+set foldlevel=99
+
+" 突出显示当前行，列
+"set cursorline
+"set cursorcolumn
+
+" 设置 退出vim后，内容显示在终端屏幕, 可以用于查看和复制
+"set t_ti= t_te=
+
+" wildmode
+set wildmode=list:longest,full
+
+" wildmenu
+set wildmenu
+
+" 打开文件时始终跳转到上次光标所在位置
+autocmd BufReadPost *
+      \ if ! exists("g:leave_my_cursor_position_alone") |
+      \     if line("'\"") > 0 && line ("'\"") <= line("$") |
+      \         exe "normal g'\"" |
+      \     endif |
+      \ endif
+
+hi ExtraWhitespace	ctermbg=red guibg=red
+match ExtraWhitespace	/\s\+\%#\@<!$\| \+\%#\@<!\ze\t/
+
+
+"""""""""""""""""""""""""KEY MAPPING""""""""""""""""""""
+
+" 映射切换buffer的键位
+nnoremap [b :bp<CR>
+nnoremap ]b :bn<CR>
+
+" 映射切换tab的键位
+nnoremap [t :tabp<CR>
+nnoremap ]t :tabn<CR>
+
+" normal模式下Ctrl+c全选并复制到系统剪贴板(linux必须装有vim-gnome)
+nmap <C-c> gg"+yG
+
+" visual模式下Ctrl+c复制选中内容到剪贴板
+vmap <C-c> "+y
+
+" Ctrl+v原样粘贴剪切板内容
+inoremap <C-v> <ESC>"+pi
+
+" w!!写入只读文件
+cmap w!! w !sudo tee >/dev/null %
+
+" 切换行号显示
+"nnoremap <F2> :set nonu!<CR>:set foldcolumn=0<CR>
+
+" F2显示TagList
+nmap <silent> <F2> :TagbarToggle<CR>
+
+" F3打开目录树
+nmap <silent> <F3> :NERDTreeToggle<CR>
+
+" F4 CtrlP
+nmap <silent> <F4> :CtrlP<CR>
+
+" F5运行脚本
+if exists("$VIRTUAL_ENV")
+    autocmd BufRead,BufNewFile *.py noremap <F5> :!$VIRTUAL_ENV'/bin/python' %<CR>
+else
+    autocmd BufRead,BufNewFile *.py noremap <F5> :!python %<CR>
 endif
 
-" Customiaze settings
-"hi cMathOperator	cterm=none ctermfg=6
-" show unexpected white spaces, and disable display while typing
-"hi ExtraWhitespace	ctermbg=red guibg=red
-"match ExtraWhitespace	/\s\+\%#\@<!$\| \+\%#\@<!\ze\t/
-let c_space_errors=1
+" <F6> 新建标签页
+map <F6> <Esc>:tabnew<CR>
 
-" Multi-line Comment -------------------
-" @brief: Add or delete line comment //
-" @map&bind
-nmap <C-C> <Esc>:Setcomment<CR>
-imap <C-C> <Esc>:Setcomment<CR>
-vmap <C-C> <Esc>:SetcommentV<CR>
-command! -nargs=0 Setcomment call s:SET_COMMENT()
-command! -nargs=0 SetcommentV call s:SET_COMMENTV()
+" <F7> 拷贝粘贴代码不破坏缩进
+set pastetoggle=<F7>
 
-"非视图模式下所调用的函数
-function! s:SET_COMMENT()
-    let lindex=line(".")
-    let str=getline(lindex)
-    "查看当前是否为注释行
-    let CommentMsg=s:IsComment(str)
-    call s:SET_COMMENTV_LINE(lindex,CommentMsg[1],CommentMsg[0])
-endfunction
+" <F8> sort import and auto pep8
+autocmd FileType python map <buffer> <F8> :!yapf -i % --style=google;isort %;<CR><CR>
 
-"视图模式下所调用的函数
-function! s:SET_COMMENTV()
-    let lbeginindex=line("'<") "得到视图中的第一行的行数
-    let lendindex=line("'>") "得到视图中的最后一行的行数
-    let str=getline(lbeginindex)
-    "查看当前是否为注释行
-    let CommentMsg=s:IsComment(str)
-    "为各行设置
-    let i=lbeginindex
-    while i<=lendindex
-         call s:SET_COMMENTV_LINE(i,CommentMsg[1],CommentMsg[0])
-        let i=i+1
-    endwhile
-endfunction
+" 给当前单词添加引号
+nnoremap w" viw<esc>a"<esc>hbi"<esc>lel
+nnoremap w' viw<esc>a'<esc>hbi'<esc>lel
 
-"设置注释
-"index:在第几行
-"pos:在第几列
-"comment_flag: 0:添加注释符 1:删除注释符
-function! s:SET_COMMENTV_LINE( index,pos, comment_flag )
-    let poscur = [0, 0,0, 0]
-    let poscur[1]=a:index
-    let poscur[2]=a:pos+1
-    call setpos(".",poscur) "设置光标的位置
+" 在Normal Mode和Visual/Select Mode下，利用Tab键和Shift-Tab键来缩进文本
+nnoremap > >>
+nnoremap < <<
+vnoremap > >gv
+vnoremap < <gv
 
-    if a:comment_flag==0
-        "插入//
-        exec "normal! i//"
-    else
-        "删除//
-        exec "normal! xx"
-    endif
-endfunction
+" 左右分割窗口Ctrl+w +v
+" 上下分割窗口Ctrl+w +s
+" 关闭窗口Ctrl+w  +q
 
-"查看当前是否为注释行并返回相关信息
-"str:一行代码
-function! s:IsComment(str)
-    let ret= [0, 0] "第一项为是否为注释行（0,1）,第二项为要处理的列，
-    let i=0
-    let strlen=len(a:str)
-    while i<strlen
-        "空格和tab允许为"//"的前缀
-        if !(a:str[i]==' ' ||    a:str[i] == '  ' )
-            let ret[1]=i
-            if a:str[i]=='/' && a:str[i+1]=='/'
-                let ret[0]=1
-            else
-                let ret[0]=0
-            endif
-            return ret
-        endif
-        let i=i+1
-    endwhile
-    return [0,0]  "空串处理
-endfunction
-" Multi-line Comment End ---------------
+" quicker window switching
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
-"-----------------
-" vimwiki support
-"-----------------
-map <S-F7> :VimwikiAll2HTML<cr>
-map <F7> :Vimwiki2HTML<cr>
-" 我们并不怎么需要驼峰英文成为维基词条
-let g:vimwiki_camel_case = 0
-" 标记为完成的 checklist 项目会有特别的颜色
-let g:vimwiki_hl_cb_checked = 1
-"let g:vimwiki_list = [{'path_html': '~/vimwiki/vimwiki_html/',}]
-let g:vimwiki_list = [{'path': '~/vimwiki/',
-                     \ 'path_html': '~/vimwiki/vimwiki_html/',
-                     \ 'template_path': '~/vimwiki/templates/',
-                     \ 'template_default': 'def_template',
-                     \ 'template_ext': '.html'}]
-" 是否在词条文件保存时就输出html  这个会让保存大词条比较慢
-" 所以我默认没有启用  有需要的话就把这一行复制到下面去
-" \ 'auto_export': 1,
-" 多个维基项目的配置
-" let g:vimwiki_list = [{'path': 'E:/My Dropbox/vimwiki/',
-"       \ 'html_header': 'E:/My Dropbox/Public/vimwiki_template/header.htm',
-"       \ 'html_footer': 'E:/My Dropbox/Public/vimwiki_template/footer.htm',
-"       \ 'diary_link_count': 5},
-"       \{'path': 'Z:\demo\qiuchi\wiki'}]
-" 对中文用户来说，我们并不怎么需要驼峰英文成为维基词条
-" let g:vimwiki_camel_case = 0
-" 标记为完成的 checklist 项目会有特别的颜色
-" let g:vimwiki_hl_cb_checked = 1
-" 我的 vim 是没有菜单的，加一个 vimwiki 菜单项也没有意义
-" let g:vimwiki_menu = ''
-" 是否开启按语法折叠  会让文件比较慢
-" let g:vimwiki_folding = 1
-" 是否在计算字串长度时用特别考虑中文字符
-" let g:vimwiki_CJK_length = 1
-" 详见下文...
-" let g:vimwiki_valid_html_tags='b,i,s,u,sub,sup,kbd,del,br,hr,div,code,h1'
+" emoji
+imap <C-e> <C-X><C-U>
 
-" AUTO COMMANDS: {{{1
-" auto expand tab to blanks
-"autocmd FileType c,cpp set expandtab
-" Restore the last quit position when open file.
-autocmd BufReadPost *
-    \ if line("'\"") > 0 && line("'\"") <= line("$") |
-    \     exe "normal g'\"" |
-    \ endif
-
-" Python
-autocmd FileType python
-    \ setlocal smartindent shiftwidth=8 ts=8 cinwords=if,elif,else,for,while,try,except,finally,def,class
-
-" SHORTCUT SETTINGS: {{{1
 " Set mapleader
 let mapleader=","
-" Space to command mode.
-"nnoremap <space> :
-"vnoremap <space> :
-" Switching between buffers.
-nnoremap <C-h> <C-W>h
-nnoremap <C-j> <C-W>j
-nnoremap <C-k> <C-W>k
-nnoremap <C-l> <C-W>l
-inoremap <C-h> <Esc><C-W>h
-inoremap <C-j> <Esc><C-W>j
-inoremap <C-k> <Esc><C-W>k
-inoremap <C-l> <Esc><C-W>l
-" "cd" to change to open directory.
-let OpenDir=system("pwd")
-nmap <silent> <leader>cdr :exe 'cd ' . OpenDir<cr>:pwd<cr>
-nmap <silent> <leader>cdf :cd %:h<cr>:pwd<cr>
 
-" PLUGIN SETTINGS: {{{1
-" taglist.vim
-let g:Tlist_Auto_Update=1
-let g:Tlist_Process_File_Always=1
-let g:Tlist_Exit_OnlyWindow=1
-let g:Tlist_Show_One_File=1
-let g:Tlist_WinWidth=36
-let g:Tlist_Enable_Fold_Column=0
-let g:Tlist_Auto_Highlight_Tag=1
-" NERDTree.vim
-let g:NERDTreeWinPos="right"
-let g:NERDTreeWinSize=32
-let g:NERDTreeShowLineNumbers=1
-let g:NERDTreeQuitOnOpen=1
-" cscope.vim
-if has("cscope")
-    set csto=1
-    set cst
-    set nocsverb
-    if filereadable("cscope.out")
-        cs add cscope.out
-    endif
-    set csverb
-endif
-" OmniCppComplete.vim
-let g:OmniCpp_DefaultNamespaces=["std"]
-let g:OmniCpp_MayCompleteScope=1
-let g:OmniCpp_SelectFirstItem=2
-" VimGDB.vim
-if has("gdb")
-	set asm=0
-	let g:vimgdb_debug_file=""
-	run macros/gdb_mappings.vim
-endif
-" LookupFile setting
-let g:LookupFile_TagExpr='"tags.fn"'
-let g:LookupFile_MinPatLength=2
-let g:LookupFile_PreserveLastPattern=0
-let g:LookupFile_PreservePatternHistory=1
-let g:LookupFile_AlwaysAcceptFirst=1
-let g:LookupFile_AllowNewFiles=0
-" Man.vim
-source $VIMRUNTIME/ftplugin/man.vim
-" snipMate
-let g:snips_author="Du Jianfeng"
-let g:snips_email="cmdxiaoha@163.com"
-let g:snips_copyright="SicMicro, Inc"
-" plugin shortcuts
-function! RunShell(Msg, Shell)
-	echo a:Msg . '...'
-	call system(a:Shell)
-	echon 'done'
-endfunction
-nmap <F2> :TlistToggle<cr>
-nmap <F3> :NERDTreeToggle<cr>
-nmap <C-F3> :NERDTreeMapRefreshRoot<cr>
-nmap <F4> :MRU<cr>
-nmap <F5> <Plug>LookupFile<cr>
-nmap <C-F5> :e<cr>
-nmap <F6> :vimgrep /<C-R>=expand("<cword>")<cr>/ **/*.c **/*.h<cr><C-o>:cw<cr>
-nmap <C-F6> :vimgrep /<C-R>=expand("<cword>")<cr>/ **/*<cr><C-o>:cw<cr>
-" cancel highlighting ExtraWhitespace
-"nmap <F8> :match ExtraWhitespace /\s\+\%#\@<!$\| \+\%#\@<!\ze\t/<cr>
-" change file format from dos to unix completely
-nmap <S-F8> :e ++ff=unix<cr>:0,$s/\r//g<cr>:w ++ff=unix<cr>
-" remove unexpected white spaces
-nmap <C-F8> :%s=\s\+$==<cr>
-nmap <C-F9> :call RunShell("Generate tags", "ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .")<cr>
-nmap <C-F10> :call HLUDSync()<cr>
-nmap <C-F11> :call RunShell("Generate filename tags", "~/.vim/shell/genfiletags.sh")<cr>
-nmap <C-F12> :call RunShell("Generate cscope", "cscope -Rb")<cr>:cs add cscope.out<cr>
 nmap <leader>sa :cs add cscope.out<cr>
 nmap <leader>ss :cs find s <C-R>=expand("<cword>")<cr><cr>
 nmap <leader>sg :cs find g <C-R>=expand("<cword>")<cr><cr>
@@ -314,7 +273,6 @@ nmap <leader>sf :cs find f <C-R>=expand("<cfile>")<cr><cr>
 nmap <leader>si :cs find i <C-R>=expand("<cfile>")<cr><cr>
 nmap <leader>sd :cs find d <C-R>=expand("<cword>")<cr><cr>
 nmap <leader>zz <C-w>o
-nmap <leader>gs :GetScripts<cr>
 " mark setting
 nmap <silent> <leader>hl <Plug>MarkSet
 vmap <silent> <leader>hl <Plug>MarkSet
@@ -322,3 +280,67 @@ nmap <silent> <leader>hh <Plug>MarkClear
 vmap <silent> <leader>hh <Plug>MarkClear
 nmap <silent> <leader>hr <Plug>MarkRegex
 vmap <silent> <leader>hr <Plug>MarkRegex
+
+""""""""""""""""""""""""""""""PLUGIN CONFIG""""""""""""""""""""""""""
+" NerdCommenter
+let g:NERDSpaceDelims=1
+
+" NERDTREE
+" 不显示的文件
+let NERDTreeIgnore=['\.pyc$', '\~$']
+" show nerdtree when starts up
+"autocmd vimenter * NERDTree
+" 退出最后一个buff时也退出nerdtree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" Always put it right
+let g:NERDTreeWinPos="right"
+let g:NERDTreeWinSize=24
+
+" Tagbar
+let g:tagbar_left = 1
+let g:tagbar_width = 24
+let g:tagbar_autoclose = 0
+let g:tagbar_iconchars = ['▸', '▾']
+let g:tagbar_autoshowtag = 1
+
+" CtrlP
+let g:ctrlp_show_hidden = 1
+
+"Ctrl-X Ctrl-U emoji补全
+set completefunc=emoji#complete
+
+" instant-markdown
+let g:instant_markdown_slow = 1
+
+" airline
+let g:airline_section_y = '%{strftime("%H:%M")}'
+" 开启tabline
+let g:airline#extensions#tabline#enabled = 1
+" tabline中当前buffer两端的分隔字符
+let g:airline#extensions#tabline#left_sep = ' '
+" tabline中未激活buffer两端的分隔字符
+let g:airline#extensions#tabline#left_alt_sep = '|'
+" tabline中buffer显示编号
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline_theme = 'papercolor'
+
+" jedi
+autocmd FileType python setlocal completeopt-=preview
+let g:jedi#completions_command = "<C-n>"
+
+"" flake8
+"let g:flake8_show_in_file = 1
+"let g:flake8_show_in_gutter = 1
+"autocmd! BufRead,BufWritePost *.py call Flake8()
+
+" gitgutter
+let g:gitgutter_sign_modified = '*'
+let g:gitgutter_sign_removed = '-'
+
+" ultisnips
+"let g:UltiSnipsExpandTrigger="<tab>"
+"let g:UltiSnipsJumpForwardTrigger="<tab>"
+"let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+" jshint
+"autocmd! BufRead,BufWritePost *.js :JSHint

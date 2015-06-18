@@ -1,4 +1,12 @@
+== Current ==
+
+Now I've switched to use Vundle to manage plugins.
+All in _vimrc.
+Originally forked from axiaoxin (https://github.com/axiaoxin/vim-settings).
+
+== Legacy ==
 Here is a list of plugins I am using:
+
 ---------------------------------------------------------------------------
 acp.vim          getscriptPlugin.vim  mru.vim             taglist.vim
 bufexplorer.vim  hlud.vim             NERD_commenter.vim  vimwiki.vim
