@@ -1,10 +1,11 @@
-== Current ==
+## Current
 
 Now I've switched to use Vundle to manage plugins.
 All in _vimrc.
 Originally forked from axiaoxin (https://github.com/axiaoxin/vim-settings).
 
-== Legacy ==
+## Legacy
+
 Here is a list of plugins I am using:
 
 ---------------------------------------------------------------------------
