@@ -224,21 +224,31 @@ nmap <silent> <F3> :NERDTreeToggle<CR>
 " F4 CtrlP
 nmap <silent> <F4> :CtrlP<CR>
 
-" F5运行脚本
-if exists("$VIRTUAL_ENV")
-    autocmd BufRead,BufNewFile *.py noremap <F5> :!$VIRTUAL_ENV'/bin/python' %<CR>
-else
-    autocmd BufRead,BufNewFile *.py noremap <F5> :!python %<CR>
-endif
+" 运行脚本
+"if exists("$VIRTUAL_ENV")
+"    autocmd BufRead,BufNewFile *.py noremap <F5> :!$VIRTUAL_ENV'/bin/python' %<CR>
+"else
+"    autocmd BufRead,BufNewFile *.py noremap <F5> :!python %<CR>
+"endif
 
-" <F6> 新建标签页
-map <F6> <Esc>:tabnew<CR>
+" <F5> 新建标签页
+map <F5> <Esc>:tabnew<CR>
+
+" <F6> vimgrep
+nmap <F6> :vimgrep /<C-R>=expand("<cword>")<cr>/ **/*.c **/*.h<cr><C-o>:cw<cr>
+nmap <C-F6> :vimgrep /<C-R>=expand("<cword>")<cr>/ **/*<cr><C-o>:cw<cr>
 
 " <F7> 拷贝粘贴代码不破坏缩进
 set pastetoggle=<F7>
 
 " <F8> sort import and auto pep8
-autocmd FileType python map <buffer> <F8> :!yapf -i % --style=google;isort %;<CR><CR>
+"autocmd FileType python map <buffer> <F8> :!yapf -i % --style=google;isort %;<CR><CR>
+" cancel highlighting ExtraWhitespace
+"nmap <F8> :match ExtraWhitespace /\s\+\%#\@<!$\| \+\%#\@<!\ze\t/<cr>
+" change file format from dos to unix completely
+nmap <S-F8> :e ++ff=unix<cr>:0,$s/\r//g<cr>:w ++ff=unix<cr>
+" remove unexpected white spaces
+nmap <C-F8> :%s=\s\+$==<cr>
 
 " 给当前单词添加引号
 nnoremap w" viw<esc>a"<esc>hbi"<esc>lel
