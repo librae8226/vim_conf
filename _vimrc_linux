@@ -250,6 +250,15 @@ nmap <S-F8> :e ++ff=unix<cr>:0,$s/\r//g<cr>:w ++ff=unix<cr>
 " remove unexpected white spaces
 nmap <C-F8> :%s=\s\+$==<cr>
 
+" <C-F12> generate cscope.out in current dir
+function! RunShell(Msg, Shell)
+        echo a:Msg . '...'
+        call system(a:Shell)
+        echon 'done'
+endfunction
+"nmap <C-F12> :!cscope -Rb<cr>
+nmap <C-F12> :call RunShell("Generate cscope", "cscope -Rb")<cr>:cs add cscope.out<cr>
+
 " 给当前单词添加引号
 nnoremap w" viw<esc>a"<esc>hbi"<esc>lel
 nnoremap w' viw<esc>a'<esc>hbi'<esc>lel
