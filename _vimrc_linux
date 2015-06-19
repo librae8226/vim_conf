@@ -176,7 +176,7 @@ set wildmode=list:longest,full
 set wildmenu
 
 " 256 color (fix airline display)
-set t_Co=256
+set term=xterm-256color
 
 " 打开文件时始终跳转到上次光标所在位置
 autocmd BufReadPost *
