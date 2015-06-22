@@ -130,7 +130,7 @@ set showmatch
 set autowrite
 
 " 允许使用鼠标
-set mouse=a
+"set mouse=a
 
 " 设置行号
 set nu
