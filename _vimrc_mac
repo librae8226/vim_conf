@@ -152,7 +152,7 @@ set smartindent
 "autocmd BufWritePre * :%s/^$\n\+\%$//ge
 
 " 填充Tab
-set expandtab
+set noexpandtab
 set tabstop=8
 set shiftwidth=8
 set shiftround
@@ -255,6 +255,16 @@ function! RunShell(Msg, Shell)
 endfunction
 "nmap <C-F12> :!cscope -Rb<cr>
 nmap <C-F12> :call RunShell("Generate cscope", "cscope -Rb")<cr>:cs add cscope.out<cr>
+" cscope autoload
+if has("cscope")
+    set csto=1
+    set cst
+    set nocsverb
+    if filereadable("cscope.out")
+        cs add cscope.out
+    endif
+    set csverb
+endif
 
 " 给当前单词添加引号
 nnoremap w" viw<esc>a"<esc>hbi"<esc>lel
