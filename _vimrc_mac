@@ -306,8 +306,8 @@ nmap <leader>zz <C-w>o
 " mark setting
 nmap <silent> <leader>hl <Plug>MarkSet
 vmap <silent> <leader>hl <Plug>MarkSet
-nmap <silent> <leader>hh <Plug>MarkClear
-vmap <silent> <leader>hh <Plug>MarkClear
+nmap <silent> <leader>hh :MarkClear<cr>
+vmap <silent> <leader>hh :MarkClear<cr>
 nmap <silent> <leader>hr <Plug>MarkRegex
 vmap <silent> <leader>hr <Plug>MarkRegex
 
