@@ -42,6 +42,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'Yggdroot/vim-mark'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'kingbin/vim-arduino'
 
 call vundle#end()
 
@@ -312,8 +313,8 @@ nmap <leader>zz <C-w>o
 " mark setting
 nmap <silent> <leader>hl <Plug>MarkSet
 vmap <silent> <leader>hl <Plug>MarkSet
-nmap <silent> <leader>hh <Plug>MarkClear
-vmap <silent> <leader>hh <Plug>MarkClear
+nmap <silent> <leader>hh :MarkClear<cr>
+vmap <silent> <leader>hh :MarkClear<cr>
 nmap <silent> <leader>hr <Plug>MarkRegex
 vmap <silent> <leader>hr <Plug>MarkRegex
 
@@ -355,8 +356,9 @@ let g:NERDTreeWinPos="right"
 let g:NERDTreeWinSize=24
 
 " Tagbar
+let g:tagbar_sort = 0
 let g:tagbar_left = 1
-let g:tagbar_width = 24
+let g:tagbar_width = 28
 let g:tagbar_autoclose = 0
 let g:tagbar_iconchars = ['▸', '▾']
 let g:tagbar_autoshowtag = 1
@@ -402,3 +404,7 @@ let g:gitgutter_sign_removed = '-'
 
 " jshint
 "autocmd! BufRead,BufWritePost *.js :JSHint
+
+" YouCompleteMe
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/_ycm_extra_conf.py'
+let g:ycm_autoclose_preview_window_after_completion = 1
